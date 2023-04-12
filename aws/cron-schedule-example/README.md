@@ -14,10 +14,11 @@ First, you need to configure your AWS credentials; there are different ways to d
 ```
 npm run sls:deploy -- --stage <stage>
 ```
+The serverless deploy command deploys your entire service via CloudFormation.
 
 ## Local development
 
-To start the local server run:
+We are using the [serverless-offline](https://github.com/dherault/serverless-offline) plugin for local development. This Serverless plugin emulates AWS λ and API Gateway on your local machine. To start the local server run:
 ```
-npm run sls:offline
+npm run sls:offline -- --stage <stage>
 ```

@@ -14,11 +14,13 @@ First, you need to configure your AWS credentials; there are different ways to d
 ```
 npm run sls:deploy -- --stage <stage>
 ```
+The serverless deploy command deploys your entire service via CloudFormation.
+
 ## Local development
 
 This project uses the [.env.local](.env.local) file to configure the local environment. To start the local server run:
 ```
-npm run sls:offline
+npm run sls:offline -- --stage <stage>
 ```
 
 ### Triggering AWS Events offline
