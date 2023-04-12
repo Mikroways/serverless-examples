@@ -1,0 +1,52 @@
+service: serverless-s3-example
+frameworkVersion: '3'
+useDotenv: true
+package:
+  individually: true
+
+plugins:
+  - serverless-offline
+  - serverless-s3-local
+
+custom:
+  s3:
+    host: localhost
+    port: 8080
+    directory: ${env:LOCAL_S3_PATH, './s3'}
+    accessKeyId: ${env:AWS_ACCESS_KEY_ID, 'S3RVER'}
+    secretAccessKey: ${env:AWS_SECRET_ACCESS_KEY, 'S3RVER'}
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: ${opt:stage, env:STAGE, 'local'}
+  region: ${opt:region, env:AWS_REGION, 'us-east-1'}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:* # Change this to the minimum required permissions
+      Resource:
+        - arn:aws:s3:::${env:S3_BUCKET_NAME}
+        - arn:aws:s3:::${env:S3_BUCKET_NAME}/*
+
+resources:
+  Resources:
+    S3Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${env:S3_BUCKET_NAME}
+  Outputs:
+    S3BucketNameOutputKey:
+      Value: !Ref S3Bucket
+
+functions:
+  s3Example:
+    handler: handler.hello
+    events:
+      - s3:
+          bucket: ${env:S3_BUCKET_NAME}
+          event: s3:ObjectCreated:*
+          # existing: true If the bucket already exists
+          # rules:
+          #   - prefix: uploads/
+          #   - suffix: .pdf
