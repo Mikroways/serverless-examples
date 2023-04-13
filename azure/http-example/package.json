@@ -1,0 +1,22 @@
+{
+  "name": "azure-example",
+  "version": "1.0.0",
+  "description": "Azure Functions HTTP example for Serverless framework",
+  "scripts": {
+    "start": "func host start",
+    "sls": "sls",
+    "sls:offline": "sls offline"
+  },
+  "keywords": [
+    "azure",
+    "serverless"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Mikroways/serverless-examples.git"
+  },
+  "dependencies": {
+    "serverless": "^3.30.1",
+    "serverless-azure-functions": "^2.0.0"
+  }
+}

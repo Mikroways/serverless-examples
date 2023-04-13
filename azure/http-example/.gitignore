@@ -1,0 +1,22 @@
+# Logs
+logs
+*.log
+
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
+
+# dotenv environment variables file
+.env
+.env.test
+
+# Serverless directories
+.serverless/
+
+# Azure Functions artifacts
+bin
+obj
+appsettings.json
+local.settings.json

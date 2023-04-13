@@ -14,8 +14,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": ""
-  },
+    "url": "git+ssh://git@github.com/Mikroways/serverless-examples.git"
+},
   "author": "Macarena Poisson",
   "license": "MIT",
   "dependencies": {
