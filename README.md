@@ -6,9 +6,12 @@
         src="https://avatars.githubusercontent.com/u/11018852?s=200&v=4"
     >
 </p>
+<h1>Serverless Examples</h1>
+
+[![License: MIT][licensebadge]][licenseurl]
+
 </div>
 
-# Serverless Examples
 
 This repository contains different examples of use cases for Serverless Framework on multiple providers. Each example has it's own `README.md`
 
@@ -37,3 +40,6 @@ To Do
 | Example                             |                                        | Runtime |
 | ----------------------------------- | -------------------------------------- | ------- |
 | [HTTP Example](azure/http-example/) | Simple HTTP example with two endpoints | NodeJS  |
+
+[licensebadge]: https://img.shields.io/badge/License-MIT-blue.svg
+[licenseurl]: https://github.com/Mikroways/serverless-examples/blob/main/LICENSE
