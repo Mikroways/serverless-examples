@@ -1,0 +1,27 @@
+{
+    "name": "start-stop-ec2-instance",
+    "version": "1.0.0",
+    "description": "Ptython example for starting and stopping EC2 instances on AWS using Serverless Framework",
+    "main": "handler.js",
+    "scripts": {
+        "sls": "serverless",
+        "sls:deploy": "serverless deploy",
+        "sls:offline": "serverless offline"
+    },
+    "keywords": [
+        "serverless framework",
+        "s3",
+        "aws"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/Mikroways/serverless-examples.git"
+    },
+    "author": "Macarena Poisson",
+    "license": "MIT",
+    "dependencies": {
+        "serverless": "^3.30.1",
+        "serverless-python-requirements": "^6.0.0",
+        "serverless-offline": "^8.8.0"
+    }
+}
