@@ -1,0 +1,37 @@
+service: serverless-simple-http
+frameworkVersion: '3'
+useDotenv: true
+package:
+  individually: true
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: ${opt:stage, env:STAGE, 'local'}
+  region: ${opt:region, env:AWS_REGION, 'us-east-1'}
+  environment:
+    STAGE: ${self:provider.stage}
+functions:
+  helloWorld:
+    environment:
+      NODE_ENV: ${env:NODE_ENV}
+    handler: src/handlers/handler.helloWorld
+    events:
+      - httpApi:
+          path: /
+          method: get
+  helloName:
+    handler: src/handlers/hello.sayHello
+    events:
+      - httpApi:
+          path: /hello
+          method: get
+  goodbyeName:
+    handler: src/handlers/goodbye.sayGoodbye
+    events:
+      - httpApi:
+          path: /goodbye
+          method: get

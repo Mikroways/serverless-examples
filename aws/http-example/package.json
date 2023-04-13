@@ -1,0 +1,26 @@
+{
+  "name": "http-example",
+  "version": "1.0.0",
+  "description": "HTTP example for AWS using Serverless Framework",
+  "main": "handler.js",
+  "scripts": {
+    "sls": "sls",
+    "sls:deploy": "serverless deploy",
+    "sls:offline": "serverless offline"
+  },
+  "keywords": [
+    "serverless framework",
+    "aws"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Macarena Poisson",
+  "license": "MIT",
+  "dependencies": {
+    "serverless": "^3.30.1",
+    "serverless-dotenv-plugin": "^4.0.1",
+    "serverless-offline": "^8.8.0"
+  }
+}
