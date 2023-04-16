@@ -10,11 +10,12 @@ plugins:
 provider:
   name: aws
   runtime: nodejs16.x
-  stage: ${opt:stage, 'local'}
+  profile: ${opt:aws-profile, env:AWS_PROFILE, ''}
+  stage: ${opt:stage, env:STAGE, 'local'}
   region: ${opt:region, env:AWS_REGION, 'us-east-1'}
 
 functions:
   cronJob:
     handler: cron-handler.hello
     events:
-      - schedule: cron(*/1 * ? * * *)
+      - schedule: ${env:CRON_SCHEDULE, 'cron(*/5 * ? * * *)'}
