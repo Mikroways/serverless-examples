@@ -16,7 +16,7 @@ provider:
   profile: ${opt:aws-profile, env:AWS_PROFILE, ''}
   deploymentBucket:
     blockPublicAccess: true
-    versioning: true
+  # versioning: true
     serverSideEncryption: AES256
   iamRoleStatements:
     - Effect: Allow # Check if needed
@@ -39,11 +39,11 @@ provider:
 
 functions:
   startInstance:
-    handler: src/handlers/start.handler
+    handler: src/handlers/start-handler.start
     events:
       - schedule: ${env:START_INSTANCE, 'cron(0 0 * * ? *)'}
   stopInstance:
-    handler: src/handlers/stop.handler
+    handler: src/handlers/stop-handler.stop
     events:
       - schedule: ${env:STOP_INSTANCE, 'cron(0 0 * * ? *)'}
 

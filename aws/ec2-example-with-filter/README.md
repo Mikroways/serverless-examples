@@ -9,7 +9,13 @@ serverless install -u https://github.com/Mikroways/serverless-examples/tree/main
 ```
 
 ### Installing dependencies
-To install the pyhton dependencies run:
+This repository uses NodeJs 16.x. Once you are using said version, install the NodeJs dependencies by running:
+
+```
+npm install
+```
+
+And to install the Pyhton dependencies run:
 ```
 npm run sls:requirements:install
 ```
