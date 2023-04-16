@@ -31,19 +31,28 @@ provider:
             - - "arn:aws:ec2"
               - Ref: AWS::Region
               - Ref: AWS::AccountId
-              - "instance/${env:EC2_INSTANCE_ID}"
+              - Fn::Join:
+                  - "/"
+                  - - "instance"
+                    - Ref: EC2Instance
+
+resources:
+  - ${file(./resource/SecurityGroup.yaml)}
+  - ${file(./resource/EC2Instance.yaml)}
+  - ${file(./resource/VPC.yaml)}
+  - ${file(./resource/VPCSubnet.yaml)}
+  - ${file(./resource/Outputs.yaml)}
 
 functions:
   startInstance:
-    handler: src/handlers/start.handler
+    handler: src/handlers/start-handler.start
     events:
       - schedule: ${env:START_INSTANCE, 'cron(0 0 * * ? *)'}
     environment:
-      EC2_INSTANCE_ID: ${env:EC2_INSTANCE_ID}
+      EC2_INSTANCE_ID: !Ref EC2Instance
   stopInstance:
-    handler: src/handlers/stop.handler
+    handler: src/handlers/stop-handler.stop
     events:
       - schedule: ${env:STOP_INSTANCE, 'cron(0 0 * * ? *)'}
     environment:
-      EC2_INSTANCE_ID: ${env:EC2_INSTANCE_ID}
-
+      EC2_INSTANCE_ID: !Ref EC2Instance

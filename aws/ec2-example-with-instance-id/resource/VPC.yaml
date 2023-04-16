@@ -1,0 +1,10 @@
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: ${env:VPC_CIDR_BLOCK}
+      EnableDnsSupport: false
+      EnableDnsHostnames: false
+      Tags:
+        - Key: Name
+          Value: ${self:service}-${self:provider.stage}-vpc

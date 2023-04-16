@@ -1,0 +1,11 @@
+Resources:
+  PrivateSubnet:
+    Type: AWS::EC2::Subnet
+    DependsOn: VPC
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: ${env:VPC_CIDR_BLOCK}
+      AvailabilityZone: !Select [0, !GetAZs ""]
+      Tags:
+        - Key: Name
+          Value: ${self:service}-${self:provider.stage}-private-subnet

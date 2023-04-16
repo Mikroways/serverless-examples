@@ -1,0 +1,15 @@
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    DependsOn: EC2SecurityGroup
+    Properties:
+      ImageId: ${env:EC2_IMAGE_ID, 'ami-0103f211a154d64a6'} # Amazon Linux 2023 AMI
+      InstanceType: ${env:EC2_TYPE, 't3.micro'}
+      SubnetId: !Ref PrivateSubnet
+      SecurityGroupIds:
+        - !Ref EC2SecurityGroup
+    # Monitoring: false # Detailed monitoring, set to false by default
+    # SecurityGroups: Array of your security groups. By default set to the default security group
+    # Tags: The tags to add to the instance.
+    # UserData: The user data script to make available to the instance.
+    # Volumes: The volumes to attach to the instance.

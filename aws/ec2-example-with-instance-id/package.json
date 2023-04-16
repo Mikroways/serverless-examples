@@ -4,9 +4,11 @@
     "description": "Ptython example for starting and stopping EC2 instances on AWS using Serverless Framework",
     "main": "handler.js",
     "scripts": {
-        "sls": "serverless",
+        "sls": "sls",
         "sls:deploy": "serverless deploy",
-        "sls:offline": "serverless offline"
+        "sls:offline": "serverless offline",
+        "sls:requirements:install": "serverless requirements install",
+        "sls:requirements:clean": "serverless requirements clean"
     },
     "keywords": [
         "serverless framework",
