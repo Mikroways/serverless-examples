@@ -5,8 +5,8 @@ package:
   individually: true
 
 plugins:
-  - serverless-offline
   - serverless-s3-local
+  - serverless-offline
 
 custom:
   s3:
@@ -29,15 +29,15 @@ provider:
         - arn:aws:s3:::${env:S3_BUCKET_NAME}
         - arn:aws:s3:::${env:S3_BUCKET_NAME}/*
 
-resources:
-  Resources:
-    S3Bucket:
-      Type: AWS::S3::Bucket
-      Properties:
-        BucketName: ${env:S3_BUCKET_NAME}
-  Outputs:
-    S3BucketNameOutputKey:
-      Value: !Ref S3Bucket
+# resources:
+#   Resources:
+#     S3Bucket:
+#       Type: AWS::S3::Bucket
+#       Properties:
+#         BucketName: ${env:EXTRA_S3_BUCKET_NAME}
+#   Outputs:
+#     S3BucketNameOutputKey:
+#       Value: !Ref S3Bucket
 
 functions:
   s3Example:
@@ -46,7 +46,7 @@ functions:
       - s3:
           bucket: ${env:S3_BUCKET_NAME}
           event: s3:ObjectCreated:*
-          # existing: true If the bucket already exists
+          # existing: true # For S3 buckets created outside this serverless stack
           # rules:
           #   - prefix: uploads/
           #   - suffix: .pdf
