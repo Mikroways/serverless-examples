@@ -20,7 +20,6 @@
   "license": "MIT",
   "dependencies": {
     "serverless": "^3.30.1",
-    "serverless-dotenv-plugin": "^4.0.1",
     "serverless-offline": "^8.8.0"
   }
 }
